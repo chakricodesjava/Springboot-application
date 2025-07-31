@@ -1,0 +1,65 @@
+
+ //save a student
+
+ curl -X POST http://localhost:9090/api/students/save \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "John Doe",
+    "email": "john.doe@gmail.com",
+    "dob": "1995-12-17"
+  }'
+
+
+   curl -X POST http://localhost:9090/api/students/save \
+    -H "Content-Type: application/json" \
+    -d '{
+      "name": "siva",
+      "email": "ram.kumar@gmail.com",
+      "dob": "1991-12-17"
+    }'
+
+
+
+//Show a student by ID
+  curl -X GET http://localhost:9090/api/students/1 \
+  -H "Content-Type: application/json"
+
+// Delete a student by ID
+ curl -X DELETE http://localhost:9090/api/students/1 \
+  -H "Content-Type: application/json"
+
+
+// All Students
+ curl -X GET http://localhost:9090/api/students \
+ -H "Content-Type: application/json"
+
+
+// Put  mapping Strudent by ID
+ curl -X PUT http://localhost:9090/api/students/1 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "id": 1,
+    "name": "John Doe Updated",
+    "email": "johne.update@gmail.com",
+    "dob": "1995-12-17"
+  }'
+
+
+ curl -X GET http://localhost:9090/api/students/name?name=siva \
+  -H "Content-Type: application/json"
+
+
+ curl -X PUT http://localhost:9090/api/students/1 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "id": 1,
+    "name": "John new"
+  }'
+
+
+ curl -X PUT http://localhost:9090/api/students/1 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "id": 1,
+    "email": "john.new@gmail.com"
+  }'
