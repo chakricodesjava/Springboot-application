@@ -1,5 +1,24 @@
 # Spring Boot CRUD Operations Q&A
 
+## General Spring Boot Questions
+
+### Q: What is Spring Boot?
+**A:** Spring Boot is a framework that simplifies the setup and development of new Spring applications. It provides a set of conventions and defaults to reduce boilerplate code.
+
+### Q: How do you create a new Spring Boot application?
+**A:** You can create a new Spring Boot application using the [Spring Initializr](https://start.spring.io/), which allows you to generate a project with your desired dependencies.
+
+### Q: What is the purpose of the `application.properties` file?
+**A:** The `application.properties` file is used to configure various aspects of a Spring Boot application, such as database connection settings, server port, logging, etc.
+
+### Q: What is the role of the `@SpringBootApplication` annotation?
+**A:** The `@SpringBootApplication` annotation is a convenience annotation that combines `@Configuration`, `@EnableAutoConfiguration`, and `@ComponentScan`. It marks the main class of a Spring Boot application.
+
+```java
+@SpringBootApplication
+public class Application
+```
+
 ## Annotations in Spring Boot
 
 ### Q: What is the `@Entity` annotation?
@@ -161,4 +180,5 @@ public interface StudentRepository extends CrudRepository<Student, Long> {
 }
 ```
 
+### Tri
 These methods will be automatically implemented by Spring Data JPA based on their names.
