@@ -47,14 +47,16 @@ public class StudentService {
     public Student updateStudent(Long id, Student student) {
         Student oldStu = studentRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Student not found with id: " + id));
-        if (student.getName() != null && !student.getName().isEmpty()) {
-            oldStu.setName(student.getName());
-        }
-        if (student.getEmail() != null && !student.getEmail().isEmpty()) {
-            oldStu.setEmail(student.getEmail());
-        }
-        if (student.getDob() != null) {
-            oldStu.setDob(student.getDob());
+        if(student != null) {
+            if (student.getName() != null && !student.getName().isEmpty()) {
+                oldStu.setName(student.getName());
+            }
+            if (student.getEmail() != null && !student.getEmail().isEmpty()) {
+                oldStu.setEmail(student.getEmail());
+            }
+            if (student.getDob() != null) {
+                oldStu.setDob(student.getDob());
+            }
         }
         return studentRepository.save(oldStu);
     }
