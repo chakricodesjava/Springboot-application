@@ -62,10 +62,5 @@ public class StudentController {
     public void deleteStudentId(@PathVariable Long id) {
         studentService.deleteStudent(id);
     }
-   /* // get student by name    // api/students/name/{name}
-    @GetMapping("/students/{name}")
-    public Student getStudentName(@PathVariable String name) {
-        return studentService.getStudentName(name);
-    }*/
 
 }
