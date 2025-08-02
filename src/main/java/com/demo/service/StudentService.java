@@ -39,24 +39,23 @@ public class StudentService {
         studentRepository.deleteById(id);
     }
 
-    public Student getStudentName(String name) {
+    public List<Student> findStudentsByName(String name) {
         System.out.println("Fetching student with name: " + name);
-      return studentRepository.findByName(name)
-                .orElseThrow(() -> new RuntimeException("Student not found with name: " + name));
+      return studentRepository.findByNameContainingOrderByNameAsc(name);
     }
 
-    public Student updateStudent(Student student) {
-            Student oldStu = studentRepository.findById(student.getId())
-                                                .orElseThrow(() -> new RuntimeException("Student not found with id: " + student.getId()));
-            if(student.getName() != null && !student.getName().isEmpty()) {
-                oldStu.setName(student.getName());
-            }
-            if(student.getEmail() != null && !student.getEmail().isEmpty()) {
-                oldStu.setEmail(student.getEmail());
-            }
-            if(student.getDob() != null) {
-                oldStu.setDob(student.getDob());
-            }
-            return studentRepository.save(oldStu);
+    public Student updateStudent(Long id, Student student) {
+        Student oldStu = studentRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Student not found with id: " + id));
+        if (student.getName() != null && !student.getName().isEmpty()) {
+            oldStu.setName(student.getName());
+        }
+        if (student.getEmail() != null && !student.getEmail().isEmpty()) {
+            oldStu.setEmail(student.getEmail());
+        }
+        if (student.getDob() != null) {
+            oldStu.setDob(student.getDob());
+        }
+        return studentRepository.save(oldStu);
     }
 }

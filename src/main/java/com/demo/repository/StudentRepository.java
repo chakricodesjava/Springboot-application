@@ -3,8 +3,8 @@ package com.demo.repository;
 import com.demo.model.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+import java.util.List;
 
 public interface StudentRepository extends JpaRepository<Student, Long> {
-    Optional<Student> findByName(String name);
+    List<Student> findByNameContainingOrderByNameAsc(String name);
 }

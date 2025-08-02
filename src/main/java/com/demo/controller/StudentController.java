@@ -11,13 +11,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/students")
 public class StudentController {
 
     private final StudentService studentService;
@@ -28,31 +27,38 @@ public class StudentController {
     }
 
     // get all Students details  // api/students
-    @GetMapping("/students")
+    @GetMapping("/")
     public List<Student>  getAllStudents() {
         return studentService.getAllStudents();
     }
     // save student details   // api/students/save
     // create a new student
-    @PostMapping("/students/save")
+    @PostMapping("/save")
     public Student saveStudent(@RequestBody Student student) {
         return studentService.saveStudent(student);
     }
+
+    //update student details  // api/students/update/{id}
+    @PutMapping("/{id}")
+    public Student getStudentName(@PathVariable Long id, @RequestBody Student student) {
+        return studentService.updateStudent(id, student);
+    }
+
     // get student by id      // api/students/{id}
-    @GetMapping("/students/{id}")
+    @GetMapping("/{id}")
     public Student getStudentId(@PathVariable long id) {
         return studentService.getStudentId(id);
     }
 
-    // get student by id      // api/students/name?name=siva
-    @GetMapping("/students/name")
-    public Student getStudentRequestParamId(@RequestParam String name) {
-        return studentService.getStudentName(name);
+    @GetMapping("/search")
+    public List<Student> searchStudents(@RequestParam String name) {
+        return studentService.findStudentsByName(name);
     }
+
     //PathVariable and @RequestParam are used to extract values from the URL.
 
     // delete student details // api/students/delete
-    @DeleteMapping("/students/{id}")
+    @DeleteMapping("/{id}")
     public void deleteStudentId(@PathVariable Long id) {
         studentService.deleteStudent(id);
     }
@@ -61,9 +67,5 @@ public class StudentController {
     public Student getStudentName(@PathVariable String name) {
         return studentService.getStudentName(name);
     }*/
-    //update student details  // api/students/update/{id}
-    @PutMapping("/students/{name}")
-    public Student getStudentName(@RequestBody Student student) {
-        return studentService.updateStudent(student);
-    }
+
 }
