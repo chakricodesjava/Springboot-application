@@ -1,5 +1,6 @@
 package com.demo.service;
 
+import com.demo.exception.StudentNotFoundException;
 import com.demo.model.Student;
 import com.demo.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class StudentService {
 
     public Student getStudentId(long id) {
         return studentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Student not found with id: " + id));
+                .orElseThrow(() -> new StudentNotFoundException(id));
     }
 
     public void deleteStudent(Long id) {

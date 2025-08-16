@@ -42,3 +42,14 @@ logging:
     org.springframework.web: DEBUG
     org.springframework.web.servlet: DEBUG
     com.example: DEBUG
+
+# Simplified SpringDoc configuration
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+    disable-swagger-default-url: true
+  packages-to-scan: com.demo
+  paths-to-match: /api/**
+  show-actuator: true

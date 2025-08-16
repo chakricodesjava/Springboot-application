@@ -27,7 +27,7 @@ RUN mkdir -p target/extracted && \
 # =========================
 #  RUNTIME STAGE
 # =========================
-FROM eclipse-temurin:24-jre-alpine
+FROM eclipse-temurin:24-jre-alpine AS production
 WORKDIR /app
 
 # Install minimal tools for health checks (use wget instead of curl - smaller)
